@@ -2,9 +2,22 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { cartContext } from "../Layout/Main";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
+import { AuthContext } from "./UserContext";
 const Header = () => {
+  const { user, Logout } = useContext(AuthContext);
+  console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cart, setCart] = useContext(cartContext);
+
+  const logoutHandler = () => {
+    Logout()
+      .then(() => {
+        alert("logout suceess");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div class="bg-gray-900">
       <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -29,6 +42,37 @@ const Header = () => {
                 Shop
               </Link>
             </li>
+            <li>
+              <Link to="signup" className="text-white">
+                Sign UP
+              </Link>
+            </li>
+            <li>
+              <Link to="signin" className="text-white">
+                Sign In
+              </Link>
+            </li>
+            <li>
+              <div className="dropdown dropdown-hover">
+                <label tabIndex={0} className="text-white">
+                  {user?.email}
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <button onClick={logoutHandler}>Logout</button>
+                  </li>
+                  <li>
+                    <Link>Password change</Link>
+                  </li>
+                  <li>
+                    <Link>Profile</Link>
+                  </li>
+                </ul>
+              </div>
+            </li>
             <li className="relative">
               <Link to="cart" className="text-white">
                 <ShoppingCartIcon className="h-6 w-6 text-white "></ShoppingCartIcon>
@@ -45,7 +89,7 @@ const Header = () => {
               <Link to="cart" className="text-white">
                 <ShoppingCartIcon className="h-6 w-6 text-white "></ShoppingCartIcon>
               </Link>
-              <p className="text-white bg-red-700 rounded-full absolute bottom-3 left-3 w-full">
+              <p className="text-white bg-red-700 rounded-full absolute bottom-3 left-3 w-full text-center">
                 {cart.length}
               </p>
             </li>
@@ -119,18 +163,20 @@ const Header = () => {
                     </div>
                   </div>
                   <nav>
-                    <li>
-                      <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                      <Link to="about">About</Link>
-                    </li>
-                    <li>
-                      <Link to="shop">Shop</Link>
-                    </li>
-                    <li>
-                      <Link to="cart">Cart</Link>
-                    </li>
+                    <ul>
+                      <li>
+                        <Link to="/">Home</Link>
+                      </li>
+                      <li>
+                        <Link to="about">About</Link>
+                      </li>
+                      <li>
+                        <Link to="shop">Shop</Link>
+                      </li>
+                      <li>
+                        <Link to="cart">Cart</Link>
+                      </li>
+                    </ul>
                   </nav>
                 </div>
               </div>

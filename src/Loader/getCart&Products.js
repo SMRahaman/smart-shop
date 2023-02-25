@@ -3,7 +3,6 @@ import { getTocart } from "../Utilits/FakeDB";
 const productAndCartData = async () => {
   const productsData = await fetch("product.json");
   const products = await productsData.json();
-  console.log(products);
 
   const savedCart = getTocart();
   const initialCart = [];
