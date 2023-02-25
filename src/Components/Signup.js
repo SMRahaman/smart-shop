@@ -34,7 +34,7 @@ const Signup = () => {
       <h2 className="text-3xl font-bold text-center text-red-900">Sign up</h2>
       <form
         onSubmit={handlerSubmit}
-        className="lg:w-1/4 sm: w-80 mx-auto my-12 shadow-lg p-12"
+        className="lg:w-1/4 sm:w-full mx-auto my-12 shadow-lg p-12"
       >
         <div class="relative z-0 w-full mb-6 group">
           <input

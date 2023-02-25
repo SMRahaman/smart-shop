@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -14,9 +15,11 @@ const Home = () => {
             Assitant, Robot Fan, Robot Cooler etc.
           </p>
           <div className="flex flex-wrap justify-center">
-            <button className="px-8 py-3 m-2 text-lg font-semibold rounded bg-violet-400 text-gray-900">
-              Get started
-            </button>
+            <Link to="/shop">
+              <button className="px-8 py-3 m-2 text-lg font-semibold rounded bg-violet-400 text-gray-900">
+                Shopping Start
+              </button>
+            </Link>
             <button className="px-8 py-3 m-2 text-lg border rounded text-gray-50 border-gray-700">
               Learn more
             </button>
