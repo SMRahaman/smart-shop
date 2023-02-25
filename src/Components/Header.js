@@ -93,6 +93,25 @@ const Header = () => {
                 {cart.length}
               </p>
             </li>
+            <div className="dropdown dropdown-hover">
+              <label tabIndex={0} className="text-white">
+                {user?.email}
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <button onClick={logoutHandler}>Logout</button>
+                </li>
+                <li>
+                  <Link>Password change</Link>
+                </li>
+                <li>
+                  <Link>Profile</Link>
+                </li>
+              </ul>
+            </div>
             <button
               aria-label="Open Menu"
               title="Open Menu"
